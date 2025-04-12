@@ -1,16 +1,23 @@
+using System.Collections.Generic;
+using Newtonsoft.Json;
 using UnityEngine;
 
-public class DataManager : MonoBehaviour
+public interface ILoader<TKey, TValue>
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    Dictionary<TKey, TValue> MakeDict();
+    bool Validate();
+}
+
+public class DataManager
+{
+    public void Init()
     {
-        
+
     }
 
-    // Update is called once per frame
-    void Update()
+    TLoader LoadJson<TLoader, TKey, TValue>(string path) where TLoader : ILoader<TKey, TValue>
     {
-        
+        var textAsset = Managers.Resource.Load<TextAsset>($"{path}");
+        return JsonConvert.DeserializeObject<TLoader>(textAsset.text);
     }
 }

@@ -5,11 +5,12 @@ public class Managers : MonoBehaviour
     const string GameObjectName = "@Managers";
 
     static Managers _instance;
+
+    readonly DataManager data = new();
     readonly PoolManager pool = new();
-
-
     readonly ResourceManager resource = new();
     readonly UIManager ui = new();
+
     static Managers Instance
     {
         get
@@ -30,6 +31,10 @@ public class Managers : MonoBehaviour
     public static UIManager UI
     {
         get { return Instance?.ui; }
+    }
+    public static DataManager Data
+    {
+        get { return Instance?.data; }
     }
 
     static void Init()
