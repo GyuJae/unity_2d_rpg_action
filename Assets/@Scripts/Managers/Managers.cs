@@ -9,6 +9,7 @@ public class Managers : MonoBehaviour
     readonly DataManager data = new();
     readonly PoolManager pool = new();
     readonly ResourceManager resource = new();
+    readonly SceneManagerEx scene = new();
     readonly UIManager ui = new();
 
     static Managers Instance
@@ -20,21 +21,25 @@ public class Managers : MonoBehaviour
         }
     }
 
-    public static ResourceManager Resource
+    public static DataManager Data
     {
-        get { return Instance?.resource; }
+        get { return Instance?.data; }
     }
     public static PoolManager Pool
     {
         get { return Instance?.pool; }
     }
+    public static ResourceManager Resource
+    {
+        get { return Instance?.resource; }
+    }
     public static UIManager UI
     {
         get { return Instance?.ui; }
     }
-    public static DataManager Data
+    public static SceneManagerEx Scene
     {
-        get { return Instance?.data; }
+        get { return Instance?.scene; }
     }
 
     static void Init()

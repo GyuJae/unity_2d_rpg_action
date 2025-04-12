@@ -1,7 +1,6 @@
-using UnityEngine;
-
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Scripts.UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -14,7 +13,8 @@ public static class Extension
         return Utils.GetOrAddComponent<T>(go);
     }
 
-    public static void BindEvent(this GameObject go, Action<PointerEventData> action = null, Define.ETouchEvent type = Define.ETouchEvent.Click)
+    public static void BindEvent(this GameObject go, Action<PointerEventData> action = null,
+        Define.ETouchEvent type = Define.ETouchEvent.Click)
     {
         UIBase.BindEvent(go, action, type);
     }
@@ -23,16 +23,15 @@ public static class Extension
     {
         return go != null && go.activeSelf;
     }
-   
+
     public static void MakeMask(this ref LayerMask mask, List<Define.ELayer> list)
     {
-        foreach (Define.ELayer layer in list)
-            mask |= (1 << (int)layer);
+        mask = list.Aggregate(mask, (current, layer) => current | 1 << (int)layer);
     }
 
     public static void AddLayer(this ref LayerMask mask, Define.ELayer layer)
     {
-        mask |= (1 << (int)layer);
+        mask |= 1 << (int)layer;
     }
 
     public static void RemoveLayer(this ref LayerMask mask, Define.ELayer layer)
@@ -42,12 +41,12 @@ public static class Extension
 
     public static void Shuffle<T>(this IList<T> list)
     {
-        int n = list.Count;
+        var n = list.Count;
         while (n > 1)
         {
             n--;
-            int k = Random.Range(0, n + 1);
-            (list[k], list[n]) = (list[n], list[k]);//swap
+            var k = Random.Range(0, n + 1);
+            (list[k], list[n]) = (list[n], list[k]); //swap
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Scripts.Scene;
+using UnityEngine;
 using Object = UnityEngine.Object;
 
 public class UITitleScene : UIScene
@@ -9,6 +10,12 @@ public class UITitleScene : UIScene
 
         BindObjects(typeof(GameObjects));
         BindTexts(typeof(Texts));
+
+        GetObject((int)GameObjects.StartImage).BindEvent(evt =>
+        {
+            Debug.Log("ChangeScene");
+            Managers.Scene.LoadScene(ESceneKind.Game);
+        });
 
         StartLoadAssets();
     }
@@ -25,8 +32,6 @@ public class UITitleScene : UIScene
 
                 GetObject((int)GameObjects.StartImage).gameObject.SetActive(true);
                 GetText((int)Texts.StatusText).text = "Touch To Start";
-
-
             }
         });
     }
