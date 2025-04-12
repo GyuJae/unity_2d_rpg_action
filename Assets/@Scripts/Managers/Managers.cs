@@ -6,10 +6,15 @@ public class Managers : MonoBehaviour
     const string GameObjectName = "@Managers";
 
     static Managers _instance;
-    public static Managers Instance { get { Init(); return _instance; } }
+    static Managers Instance { get { Init(); return _instance; } }
+
+    #region Core
+    readonly ResourceManager resource = new();
+    readonly PoolManager pool = new();
     
-    ResourceManager _resource = new();
-    public static ResourceManager Resource { get { return Instance?._resource; } }
+    public static ResourceManager Resource { get { return Instance?.resource; } }
+    public static PoolManager Pool { get { return Instance?.pool; } }
+    #endregion
     
     static void Init()
     {
