@@ -3,11 +3,14 @@ using UnityEngine;
 
 public class Managers : MonoBehaviour
 {
-    const String GameObjectName = "@Managers";
+    const string GameObjectName = "@Managers";
 
     static Managers _instance;
     public static Managers Instance { get { Init(); return _instance; } }
-
+    
+    ResourceManager _resource = new();
+    public static ResourceManager Resource { get { return Instance?._resource; } }
+    
     static void Init()
     {
         if (_instance != null) return;
