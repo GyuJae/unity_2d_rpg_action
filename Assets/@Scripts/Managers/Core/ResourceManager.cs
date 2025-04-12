@@ -6,6 +6,8 @@ using Object = UnityEngine.Object;
 
 public class ResourceManager
 {
+    public const string PreLoadTag = "PreLoad"; 
+    
     Dictionary<string, UnityEngine.Object> _resources = new();
     
     public bool CheckResource<T>(string key) where T : Object

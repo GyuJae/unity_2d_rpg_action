@@ -4,18 +4,18 @@ using UnityEngine.Pool;
 
 internal class Pool
 {
-    private GameObject _prefab;
-    private IObjectPool<GameObject> _pool;
+    readonly GameObject prefab;
+    readonly IObjectPool<GameObject> pool;
 
-    private Transform _root;
+    Transform _root;
 
-    private Transform Root
+    Transform Root
     {
         get
         {
             if (_root == null)
             {
-                GameObject go = new GameObject() { name = $"@{_prefab.name}Pool" };
+                GameObject go = new GameObject() { name = $"@{prefab.name}Pool" };
                 _root = go.transform;
             }
 
@@ -25,28 +25,27 @@ internal class Pool
 
     public Pool(GameObject prefab)
     {
-        _prefab = prefab;
-        _pool = new ObjectPool<GameObject>(OnCreate, OnGet, OnRelease, OnDestroy);
+        this.prefab = prefab;
+        pool = new ObjectPool<GameObject>(OnCreate, OnGet, OnRelease, OnDestroy);
     }
 
     public void Push(GameObject go)
     {
         if(go.activeSelf)
-            _pool.Release(go);
+            pool.Release(go);
     }
 
     public GameObject Pop()
     {
-        return _pool.Get();
+        return pool.Get();
     }
 
     #region Funcs
 
     GameObject OnCreate()
     {
-        GameObject go = GameObject.Instantiate(_prefab);
-        go.transform.SetParent(Root);
-        go.name = _prefab.name;
+        GameObject go = GameObject.Instantiate(prefab, Root, true);
+        go.name = prefab.name;
         return go;
     }
 

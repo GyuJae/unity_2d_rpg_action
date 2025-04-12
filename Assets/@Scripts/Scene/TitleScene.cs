@@ -1,16 +1,31 @@
+using Scripts.Scene;
 using UnityEngine;
 
-public class TitleScene : MonoBehaviour
+public sealed class TitleScene : BaseScene
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public override ESceneKind SceneKind { get; } = ESceneKind.Title;
+
+    protected override void Awake()
     {
-        
+        base.Awake();
+           
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Clear()
     {
-        
+        throw new System.NotImplementedException();
+    }
+
+    void StartLoadAssets()
+    {
+        Managers.Resource.LoadAllAsync<Object>(ResourceManager.PreLoadTag, (key, count, totalCount) =>
+        {
+            Debug.Log($"{key} {count}/{totalCount}");
+
+            if (count == totalCount)
+            {
+                //Managers.Data.Init();
+            }
+        });
     }
 }
