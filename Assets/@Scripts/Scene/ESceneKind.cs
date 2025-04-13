@@ -1,27 +1,18 @@
-﻿namespace Scripts.Scene
+﻿public sealed class ESceneKind
 {
-    public sealed class ESceneKind
+    public readonly static ESceneKind Title = new("TitleScene");
+    public readonly static ESceneKind Game = new("GameScene");
+
+    ESceneKind(string name)
     {
-        public readonly static ESceneKind Title = new(0, "TitleScene");
-        public readonly static ESceneKind Game = new(1, "GameScene");
+        Name = name;
+    }
 
-        ESceneKind(int index, string name)
-        {
-            Index = index;
-            Name = name;
-        }
+    string Name { get; }
 
-        string Name { get; }
-        int Index { get; }
 
-        public string GetName()
-        {
-            return Name;
-        }
-
-        public override string ToString()
-        {
-            return Name;
-        }
+    public string GetName()
+    {
+        return Name;
     }
 }

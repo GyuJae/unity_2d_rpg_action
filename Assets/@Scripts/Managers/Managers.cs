@@ -7,6 +7,8 @@ public class Managers : MonoBehaviour
     static Managers _instance;
 
     readonly DataManager data = new();
+    readonly GameManager game = new();
+    readonly ObjectManager obj = new();
     readonly PoolManager pool = new();
     readonly ResourceManager resource = new();
     readonly SceneManagerEx scene = new();
@@ -24,6 +26,14 @@ public class Managers : MonoBehaviour
     public static DataManager Data
     {
         get { return Instance?.data; }
+    }
+    public static GameManager Game
+    {
+        get { return Instance?.game; }
+    }
+    public static ObjectManager Object
+    {
+        get { return Instance?.obj; }
     }
     public static PoolManager Pool
     {

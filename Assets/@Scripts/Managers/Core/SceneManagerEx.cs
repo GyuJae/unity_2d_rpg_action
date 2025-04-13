@@ -1,4 +1,3 @@
-using Scripts.Scene;
 using UnityEngine.SceneManagement;
 
 public class SceneManagerEx

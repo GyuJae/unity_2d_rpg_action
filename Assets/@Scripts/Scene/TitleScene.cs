@@ -1,5 +1,4 @@
-using Scripts.Scene;
-using UnityEngine;
+using System;
 
 public sealed class TitleScene : BaseScene
 {
@@ -8,24 +7,11 @@ public sealed class TitleScene : BaseScene
     protected override void Awake()
     {
         base.Awake();
-           
+
     }
 
     public override void Clear()
     {
-        throw new System.NotImplementedException();
-    }
-
-    void StartLoadAssets()
-    {
-        Managers.Resource.LoadAllAsync<Object>(ResourceManager.PreLoadTag, (key, count, totalCount) =>
-        {
-            Debug.Log($"{key} {count}/{totalCount}");
-
-            if (count == totalCount)
-            {
-                //Managers.Data.Init();
-            }
-        });
+        throw new NotImplementedException();
     }
 }

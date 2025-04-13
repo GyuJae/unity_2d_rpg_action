@@ -1,5 +1,4 @@
-﻿using Scripts.Scene;
-using UnityEngine;
+﻿using UnityEngine;
 using Object = UnityEngine.Object;
 
 public class UITitleScene : UIScene

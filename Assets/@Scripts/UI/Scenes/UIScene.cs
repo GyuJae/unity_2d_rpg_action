@@ -1,5 +1,4 @@
-﻿using Scripts.Scene;
-using Scripts.UI;
+﻿using Scripts.UI;
 
 public class UIScene : UIBase
 {
@@ -10,4 +9,3 @@ public class UIScene : UIBase
         Managers.UI.SetCanvas(gameObject, false);
     }
 }
-
