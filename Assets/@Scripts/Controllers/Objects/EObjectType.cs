@@ -1,6 +1,6 @@
 ﻿public sealed class EObjectType
 {
-    public readonly static EObjectType Creture = new("Creature");
+    public readonly static EObjectType Creature = new("Creature");
 
     EObjectType(string name)
     {

@@ -4,4 +4,9 @@
     {
         return "idle";
     }
+
+    public override float GetUpdateAITick()
+    {
+        return 0.5f;
+    }
 }

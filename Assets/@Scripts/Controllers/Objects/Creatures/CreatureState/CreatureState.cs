@@ -6,4 +6,5 @@
     public readonly static CreatureState Dead = new DeadCreatureState();
 
     public abstract string GetAnimName();
+    public abstract float GetUpdateAITick();
 }

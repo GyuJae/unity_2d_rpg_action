@@ -1,13 +1,22 @@
 ﻿public abstract class Creature : BaseObject
 {
-    protected override EObjectType ObjectType { get; } = EObjectType.Creture;
+    CreatureState state;
+    public override EObjectType ObjectType { get; } = EObjectType.Creature;
     public abstract float Speed { get; protected set; }
+    protected CreatureState State
+    {
+        get { return state; }
+        set
+        {
+            if (value == state) return;
+            state = value;
+            UpdateAnimation();
+        }
+    }
 
-    public abstract CreatureState State { get; set; }
+    public abstract ECreatureType Type { get; }
 
-    public abstract ECreatureType type { get; }
-
-    protected void UpdateAnimation()
+    void UpdateAnimation()
     {
         PlayAnimation(0, State.GetAnimName(), true);
     }

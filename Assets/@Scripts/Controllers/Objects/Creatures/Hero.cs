@@ -7,9 +7,7 @@ public class Hero : Creature
     Vector2 moveDir = Vector2.zero;
     public override float Speed { get; protected set; } = 5.0f;
 
-    public override CreatureState State { get; set; } = CreatureState.Idle;
-
-    public override ECreatureType type { get; } = ECreatureType.Hero;
+    public override ECreatureType Type { get; } = ECreatureType.Hero;
 
     protected override void Awake()
     {
@@ -28,15 +26,14 @@ public class Hero : Creature
 
     void OnJoystickStateChanged(Define.ETouchEvent stickState)
     {
-        var newState = State;
         switch (stickState)
         {
 
             case Define.ETouchEvent.PointerUp:
-                newState = CreatureState.Idle;
+                State = CreatureState.Idle;
                 break;
             case Define.ETouchEvent.PointerDown:
-                newState = CreatureState.Move;
+                State = CreatureState.Move;
                 break;
             case Define.ETouchEvent.Click:
             case Define.ETouchEvent.Pressed:
@@ -47,11 +44,6 @@ public class Hero : Creature
             default:
                 throw new ArgumentOutOfRangeException(nameof(stickState), stickState, null);
         }
-
-        if (newState == State) return;
-
-        State = newState;
-        UpdateAnimation();
     }
 
     void OnMoveDirChanged(Vector2 dir)

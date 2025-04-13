@@ -4,7 +4,7 @@ using UnityEngine;
 public abstract class BaseObject : MonoBehaviour
 {
     bool lookLeft = true;
-    protected abstract EObjectType ObjectType { get; }
+    public abstract EObjectType ObjectType { get; }
     public CircleCollider2D Collider { get; private set; }
     public SkeletonAnimation SkeletonAnim { get; private set; }
     public Rigidbody2D RigidBody { get; private set; }

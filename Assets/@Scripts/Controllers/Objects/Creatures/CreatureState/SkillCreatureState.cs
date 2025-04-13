@@ -4,4 +4,9 @@
     {
         return "attack_a";
     }
+
+    public override float GetUpdateAITick()
+    {
+        return 0.0f;
+    }
 }

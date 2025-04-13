@@ -4,4 +4,9 @@
     {
         return "dead";
     }
+
+    public override float GetUpdateAITick()
+    {
+        return 1.0f;
+    }
 }

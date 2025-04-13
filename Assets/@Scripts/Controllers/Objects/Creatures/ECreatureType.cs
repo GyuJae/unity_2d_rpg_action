@@ -1,12 +1,14 @@
 ﻿public class ECreatureType
 {
-    public readonly static ECreatureType Hero = new("Hero");
-    public readonly static ECreatureType Monster = new("Monster");
+    public readonly static ECreatureType Hero = new("Hero", "@Heroes");
+    public readonly static ECreatureType Monster = new("Monster", "@Monsters");
 
-    ECreatureType(string name)
+    ECreatureType(string name, string rootObjName)
     {
         Name = name;
+        RootObjName = rootObjName;
     }
 
-    string Name { get; }
+    public string Name { get; }
+    public string RootObjName { get; }
 }

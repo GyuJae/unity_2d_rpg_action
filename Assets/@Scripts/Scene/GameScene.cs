@@ -20,6 +20,8 @@ public sealed class GameScene : BaseScene
         Camera.main.GetOrAddComponent<CameraController>().Target = hero;
 
         Managers.UI.ShowSceneUI<UIJoystick>();
+
+        Managers.Object.Spawn(new Vector3Int(-10, -10, 0), Monster.PrefabName);
     }
 
     public override void Clear()
