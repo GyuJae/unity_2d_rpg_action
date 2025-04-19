@@ -7,6 +7,7 @@ public class Monster : Creature
     public override float Speed { get; protected set; } = 5.0f;
     public Vector3 Destination { get; private set; }
     public override ECreatureType Type { get; } = ECreatureType.Monster;
+    public Hero Target { get; private set; }
 
 
     protected override void Awake()
@@ -39,5 +40,15 @@ public class Monster : Creature
     public void SetState(CreatureState newState)
     {
         State = newState;
+    }
+
+    public void SetTarget(Hero hero)
+    {
+        Target = hero;
+    }
+
+    public bool ExistTarget()
+    {
+        return Target is not null;
     }
 }
