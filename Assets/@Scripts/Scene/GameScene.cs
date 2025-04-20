@@ -15,7 +15,6 @@ public sealed class GameScene : BaseScene
         map.name = "@BaseMap";
 
         var hero = Managers.Object.Spawn(new Vector3Int(-10, -5, 0), Hero.PrefabName);
-        // hero.CreatureState = ECreatureState.Move;
 
         Camera.main.GetOrAddComponent<CameraController>().Target = hero;
 
