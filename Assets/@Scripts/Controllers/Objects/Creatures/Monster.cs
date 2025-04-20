@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class Monster : Creature
 {
-    public const string PrefabName = "Monster";
-    public override float Speed { get; protected set; } = 5.0f;
     public Vector3 Destination { get; private set; }
     public override ECreatureType Type { get; } = ECreatureType.Monster;
     public Hero Target { get; private set; }

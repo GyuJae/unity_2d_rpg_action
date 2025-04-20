@@ -12,9 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
   m_Name: Data
   m_EditorClassIdentifier: 
-  m_GroupName: Packed Assets
+  m_GroupName: Data
   m_GUID: e856b03000dc66944baf90aec3f0215e
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 1b9fa31b25b73ba41af10a6e7eef7663
+    m_Address: CreatureData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: db7c0b011b606ab47ae392ae588559f4
+    m_Address: EnvData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 985770e3c176ad84e8870909628505ca, type: 2}
   m_SchemaSet:

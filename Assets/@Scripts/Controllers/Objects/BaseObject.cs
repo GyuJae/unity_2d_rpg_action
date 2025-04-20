@@ -8,6 +8,7 @@ public abstract class BaseObject : MonoBehaviour
     public CircleCollider2D Collider { get; private set; }
     public SkeletonAnimation SkeletonAnim { get; private set; }
     public Rigidbody2D RigidBody { get; private set; }
+    public int DataTemplateID { get; set; }
 
     public float ColliderRadius
     {
@@ -69,4 +70,9 @@ public abstract class BaseObject : MonoBehaviour
 
         SkeletonAnim.Skeleton.ScaleX = flag ? -1 : 1;
     }
+
+    // public virtual void OnAnimEventHandler(TrackEntrv trackEntry, Event e)
+    // {
+    //     Debug.Log("OnAnimEventHandler");
+    // }
 }

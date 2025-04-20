@@ -61,6 +61,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -135,12 +138,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4373596034486630441}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45fd0021159f43d46a726e979121a163, type: 3}
+  m_Script: {fileID: 11500000, guid: ad6b11d0b5e041ccaed038d2c415130e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!50 &2055065751809685856
 Rigidbody2D:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -151,8 +154,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 300
-  m_AngularDrag: 0.05
+  m_LinearDamping: 300
+  m_AngularDamping: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:

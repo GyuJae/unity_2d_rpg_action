@@ -10,9 +10,13 @@ public interface ILoader<TKey, TValue>
 
 public class DataManager
 {
+    public Dictionary<int, CreatureData> CreatureDict { get; private set; } = new();
+    public Dictionary<int, EnvData> EnvDict { get; private set; } = new();
+
     public void Init()
     {
-
+        CreatureDict = LoadJson<CreatureDataLoader, int, CreatureData>("CreatureData").MakeDict();
+        EnvDict = LoadJson<EnvDataLoader, int, EnvData>("EnvData").MakeDict();
     }
 
     TLoader LoadJson<TLoader, TKey, TValue>(string path) where TLoader : ILoader<TKey, TValue>

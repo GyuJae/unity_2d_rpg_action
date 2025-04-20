@@ -27,7 +27,7 @@ public class UITitleScene : UIScene
 
             if (count == totalCount)
             {
-                // Managers.Data.Init();
+                Managers.Data.Init();
 
                 GetObject((int)GameObjects.StartImage).gameObject.SetActive(true);
                 GetText((int)Texts.StatusText).text = "Touch To Start";

@@ -23,9 +23,11 @@ public class ObjectManager
         return root.transform;
     }
 
-    public BaseObject Spawn(Vector3 position, string prefabName)
+    public T Spawn<T>(Vector3 position, int templateID) where T : BaseObject
     {
-        var go = Managers.Resource.Instantiate(prefabName, pooling: true);
+        var prefabName = typeof(T).Name;
+
+        var go = Managers.Resource.Instantiate(prefabName);
         go.transform.position = position;
 
         var obj = go.GetComponent<BaseObject>();
@@ -33,6 +35,12 @@ public class ObjectManager
         // TODO Refactoring
         if (obj.ObjectType == EObjectType.Creature)
         {
+            if (templateID != 0 && Managers.Data.CreatureDict.TryGetValue(templateID, out var creatureData) == false)
+            {
+                Debug.LogError($"ObjectManager Spawn Creature Failed! TryGetValue TemplateID : {templateID}");
+                return null;
+            }
+
             var creature = go.GetComponent<Creature>();
             if (creature.Type == ECreatureType.Hero)
             {
@@ -44,9 +52,11 @@ public class ObjectManager
                 obj.transform.SetParent(MonsterRoot);
                 Monsters.Add(creature as Monster);
             }
+
+            creature.SetInfo(templateID);
         }
 
-        return obj;
+        return obj as T;
     }
     // TODO Despawn
 }

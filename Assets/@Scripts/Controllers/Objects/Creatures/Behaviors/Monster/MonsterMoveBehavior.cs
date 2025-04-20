@@ -25,7 +25,7 @@ public class MonsterMoveBehavior : ICreatureBehavior
             else
             {
                 // 공격 범위 밖이라면 추적.
-                var moveDist = Mathf.Min(dir.magnitude, Time.deltaTime * monster.Speed);
+                var moveDist = Mathf.Min(dir.magnitude, Time.deltaTime * monster.CreatureData.MoveSpeed);
                 monster.TranslateEx(dir.normalized * moveDist);
 
                 // 너무 멀어지면 포기.
@@ -40,7 +40,7 @@ public class MonsterMoveBehavior : ICreatureBehavior
         else
         {
             var direction = monster.Destination - monster.transform.position;
-            var moveDist = Mathf.Min(direction.magnitude, Time.deltaTime * monster.Speed);
+            var moveDist = Mathf.Min(direction.magnitude, Time.deltaTime * monster.CreatureData.MoveSpeed);
             monster.TranslateEx(direction.normalized * moveDist);
             if (direction.sqrMagnitude <= 0.01f)
             {
